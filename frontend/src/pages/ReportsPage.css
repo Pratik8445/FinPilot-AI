@@ -1,0 +1,76 @@
+.reports-page { display: flex; flex-direction: column; gap: var(--space-6); }
+
+/* Table */
+.reports-table-wrapper {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  box-shadow: var(--shadow-card);
+}
+
+.reports-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
+
+.reports-table thead tr { border-bottom: 1px solid var(--color-border); }
+
+.reports-table th {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.01);
+}
+
+.reports-table td {
+  padding: var(--space-4) var(--space-5);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reports-table tbody tr:last-child td { border-bottom: none; }
+.reports-table tbody tr { transition: background var(--transition-fast); }
+.reports-table tbody tr:hover { background: var(--color-bg-hover); }
+
+.reports-table__id {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  width: 48px;
+  font-family: var(--font-mono);
+}
+
+.reports-table__name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 200px;
+}
+
+.reports-table__file-icon { font-size: 1rem; flex-shrink: 0; opacity: 0.6; }
+
+.reports-table__link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  transition: color var(--transition-fast);
+}
+.reports-table__link:hover { color: var(--color-primary); text-decoration: none; }
+
+.reports-table__date { color: var(--color-text-muted); white-space: nowrap; font-size: var(--font-size-xs); font-family: var(--font-mono); }
+
+.reports-table__actions { display: flex; gap: var(--space-2); align-items: center; }
+
+@media (max-width: 640px) {
+  .reports-table th:nth-child(3), .reports-table td:nth-child(3),
+  .reports-table th:nth-child(5), .reports-table td:nth-child(5) { display: none; }
+}

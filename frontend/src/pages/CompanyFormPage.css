@@ -1,0 +1,59 @@
+.company-form-page {
+  display: flex; flex-direction: column; gap: var(--space-6); max-width: 620px;
+}
+
+.back-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: color var(--transition-fast);
+  font-weight: 500;
+}
+.back-link:hover { color: var(--color-text-primary); text-decoration: none; }
+
+/* Form Card */
+.form-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+
+.form-card__header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-5);
+}
+
+.form-card__title {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.3px;
+}
+
+.form-card__subtitle { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+.company-form { display: flex; flex-direction: column; gap: var(--space-5); }
+
+.form-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 480px) {
+  .form-card { padding: var(--space-6) var(--space-4); }
+  .form-actions { flex-direction: column-reverse; }
+  .form-actions .btn { width: 100%; justify-content: center; }
+}

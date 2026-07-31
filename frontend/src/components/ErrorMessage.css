@@ -1,0 +1,36 @@
+.error-message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-danger-light);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.error-message__icon {
+  flex-shrink: 0;
+  font-size: var(--font-size-base);
+  margin-top: 1px;
+}
+
+.error-message__text {
+  flex: 1;
+}
+
+.error-message__dismiss {
+  flex-shrink: 0;
+  background: transparent;
+  color: var(--color-danger);
+  font-size: var(--font-size-base);
+  padding: 0 var(--space-1);
+  line-height: 1;
+  transition: opacity var(--transition-fast);
+}
+
+.error-message__dismiss:hover {
+  opacity: 0.7;
+}

@@ -1,0 +1,555 @@
+/* =============================================
+   PREMIUM AUTH — Linear / Vercel style
+   ============================================= */
+
+/* ── Full-bleed root ─────────────────────────── */
+.lp-root {
+  min-height: 100vh;
+  background: #05070f;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Animated mesh background ────────────────── */
+.lp-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lp-bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* Orbs */
+.lp-bg__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  animation: orb-drift 12s ease-in-out infinite alternate;
+}
+
+.lp-bg__orb--1 {
+  width: 600px; height: 600px;
+  top: -200px; left: -150px;
+  background: radial-gradient(circle, rgba(0,212,255,0.18) 0%, transparent 65%);
+  animation-delay: 0s;
+}
+
+.lp-bg__orb--2 {
+  width: 500px; height: 500px;
+  bottom: -150px; right: -100px;
+  background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 65%);
+  animation-delay: -4s;
+}
+
+.lp-bg__orb--3 {
+  width: 400px; height: 400px;
+  top: 40%; left: 55%;
+  background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 65%);
+  animation-delay: -8s;
+}
+
+@keyframes orb-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.08); }
+}
+
+/* ── Nav bar ─────────────────────────────────── */
+.lp-nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  background: rgba(5,7,15,0.6);
+}
+
+.lp-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lp-nav__logo {
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.lp-nav__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f0f6ff;
+  letter-spacing: -0.3px;
+}
+
+.lp-nav__cta {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(240,246,255,0.7);
+  text-decoration: none;
+  padding: 7px 18px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  transition: all 0.15s ease;
+  backdrop-filter: blur(8px);
+}
+
+.lp-nav__cta:hover {
+  color: #f0f6ff;
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  text-decoration: none;
+}
+
+/* ── Main centered column ────────────────────── */
+.lp-main {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px 64px;
+  gap: 24px;
+}
+
+/* ── Badge / pill ───────────────────────────── */
+.lp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(0,212,255,0.06);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(0,212,255,0.9);
+  letter-spacing: 0.2px;
+  animation: fade-up 0.5s ease both;
+}
+
+.lp-badge__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #00d4ff;
+  box-shadow: 0 0 8px #00d4ff;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ── Headline ────────────────────────────────── */
+.lp-headline {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #f0f6ff;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0;
+  animation: fade-up 0.55s ease 0.05s both;
+}
+
+.lp-headline__gradient {
+  background: linear-gradient(90deg, #00d4ff 0%, #7c3aed 55%, #00d4ff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 0% center; }
+  to   { background-position: 200% center; }
+}
+
+/* ── Subline ─────────────────────────────────── */
+.lp-subline {
+  font-size: 1rem;
+  color: rgba(124,144,170,0.9);
+  text-align: center;
+  max-width: 440px;
+  line-height: 1.65;
+  margin: 0;
+  animation: fade-up 0.6s ease 0.1s both;
+}
+
+/* ── Card ────────────────────────────────────── */
+.lp-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(17,24,39,0.8);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  backdrop-filter: blur(24px);
+  box-shadow:
+    0 0 0 1px rgba(0,212,255,0.05),
+    0 24px 64px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  animation: fade-up 0.65s ease 0.15s both;
+  position: relative;
+}
+
+/* Top shimmer line */
+.lp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.5), transparent);
+  border-radius: 999px;
+}
+
+.lp-card__header {}
+
+.lp-card__title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f0f6ff;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.lp-card__sub {
+  font-size: 0.85rem;
+  color: rgba(124,144,170,0.8);
+}
+
+.lp-card__switch {
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(124,144,170,0.7);
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.lp-card__switch a {
+  color: #00d4ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lp-card__switch a:hover { text-decoration: underline; }
+
+/* ── Form ────────────────────────────────────── */
+.lp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Field ───────────────────────────────────── */
+.lp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lp-field__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-field__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(240,246,255,0.7);
+  letter-spacing: 0.3px;
+}
+
+.lp-field__hint {
+  font-size: 0.72rem;
+  color: rgba(124,144,170,0.6);
+}
+
+.lp-field__input {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #f0f6ff;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  outline: none;
+}
+
+.lp-field__input::placeholder { color: rgba(124,144,170,0.45); }
+
+.lp-field__input:focus {
+  border-color: rgba(0,212,255,0.5);
+  background: rgba(0,212,255,0.04);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+}
+
+.lp-field__input:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.lp-field__input--padded { padding-right: 44px; }
+
+.lp-field__wrap { position: relative; }
+
+.lp-field__eye {
+  position: absolute;
+  right: 12px; top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(124,144,170,0.5);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s ease;
+  line-height: 1;
+}
+
+.lp-field__eye:hover { color: rgba(240,246,255,0.8); }
+
+/* ── Primary button ──────────────────────────── */
+.lp-btn-primary {
+  width: 100%;
+  padding: 12px 24px;
+  margin-top: 4px;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+  box-shadow: 0 0 20px rgba(0,212,255,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+  letter-spacing: 0.2px;
+}
+
+.lp-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #33ddff 0%, #00b8e0 100%);
+  box-shadow: 0 0 32px rgba(0,212,255,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+  transform: translateY(-1px);
+}
+
+.lp-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lp-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Spinner ─────────────────────────────────── */
+.lp-spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Social proof strip ──────────────────────── */
+.lp-proof {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  animation: fade-up 0.7s ease 0.2s both;
+}
+
+.lp-proof__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.lp-proof__val {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #00d4ff;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  line-height: 1;
+}
+
+.lp-proof__lbl {
+  font-size: 0.65rem;
+  color: rgba(124,144,170,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.lp-proof__sep {
+  width: 1px;
+  height: 28px;
+  background: rgba(255,255,255,0.07);
+  flex-shrink: 0;
+}
+
+/* ── Checklist (register) ────────────────────── */
+.lp-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  justify-content: center;
+  max-width: 440px;
+  animation: fade-up 0.7s ease 0.2s both;
+}
+
+.lp-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: rgba(124,144,170,0.7);
+}
+
+.lp-check__icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* ── Entry animation ─────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Shared form styles (used by other pages) ── */
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.form-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(240,246,255,0.7);
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-label__hint { font-weight: 400; color: rgba(124,144,170,0.5); font-size: 0.72rem; }
+
+.form-input {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(17,24,39,0.9);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #f0f6ff;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.form-input::placeholder { color: rgba(124,144,170,0.45); }
+
+.form-input:focus {
+  border-color: rgba(0,212,255,0.5);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+}
+
+.form-input:disabled { opacity: 0.45; cursor: not-allowed; }
+.form-input--error { border-color: rgba(239,68,68,0.6); }
+.form-input--error:focus { box-shadow: 0 0 0 3px rgba(239,68,68,0.15); }
+
+.form-select {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(17,24,39,0.9);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #f0f6ff;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237c90aa' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  outline: none;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  border-color: rgba(0,212,255,0.5);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+}
+
+.form-select option { background: #111827; color: #f0f6ff; }
+
+.form-hint       { font-size: 0.72rem; color: rgba(124,144,170,0.5); margin-top: 3px; }
+.form-error-text { font-size: 0.72rem; color: #ef4444; margin-top: 3px; }
+.form-required   { color: #ef4444; margin-left: 2px; }
+
+/* auth-input-wrap used on older button toggle pattern */
+.auth-input-wrap { position: relative; }
+.auth-input-wrap__input { width: 100%; padding-right: 44px !important; }
+.auth-input-wrap__toggle {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  background: transparent; border: none; outline: none;
+  font-size: 1rem; color: rgba(124,144,170,0.5); cursor: pointer; padding: 4px; line-height: 1;
+  transition: color 0.15s ease;
+}
+.auth-input-wrap__toggle:hover { color: #f0f6ff; }
+
+/* Button spinner for non-lp buttons */
+.btn-spinner {
+  display: inline-block; width: 14px; height: 14px;
+  border: 2px solid rgba(0,0,0,0.2); border-top-color: #000;
+  border-radius: 50%; animation: spin 0.7s linear infinite;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 600px) {
+  .lp-nav { padding: 16px 20px; }
+  .lp-main { padding: 32px 16px 48px; gap: 20px; }
+  .lp-headline { font-size: 1.9rem; letter-spacing: -1px; }
+  .lp-card { padding: 24px 20px; border-radius: 16px; }
+  .lp-proof { flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .lp-proof__sep { display: none; }
+}
